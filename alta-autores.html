@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <img src="./Img/logo1.png" width="50" height="50" class="d-inline-block align -top" alt="">
+            <a class="navbar-brand font-weight-normal" href="principal.html">DGBooks</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="principal.html">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Prestamos
+                              </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item font-weight-normal" href="alta-prestamos.html">Préstamos</a>
+                            <hr>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Altas
+                                          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item font-weight-normal" href="alta-usuario.html">Alta Usuario</a>
+                            <hr>
+                            <a class="dropdown-item font-weight-normal" href="alta-autores.html">Alta Autor</a>
+                            <hr>
+                            <a class="dropdown-item font-weight-normal" href="alta-libro.html">Alta Libro</a>
+                            <hr>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Reportes
+                                              </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item font-weight-normal" href="reporte-usuarios.html">Usuario</a>
+                            <a class="dropdown-item font-weight-normal" href="reporte-autores.html"> Autores</a>
+                            <a class="dropdown-item font-weight-normal" href="reporte-libros.html"> Libros</a>
+                            <a class="dropdown-item font-weight-normal" href="reporte-prestamos.html"> Préstamos</a>
+                            <hr>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto flex-column-reverse flex-md-row">
+                    <li>
+                        <a id="cerrar_sesion" class="nav-link" href="#">Cerrar Sesión <span class="sr-only"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <img src="./Img/libro.jfif" width="100" height="100" class="rounded mx-auto d-block" alt="Responsive image">
+
+        <div class="container-fluid">
+            <div class="row h-100 d-flex justify-content-center">
+                <div class="col-md-6 mt-5">
+                    <h2>
+                        <div class="p-3 mb-2 bg-secondary text-white font-weight-normal">Alta Autor</div>
+                    </h2>
+                    <hr>
+                    <form enctype="multipart/form-data">
+                        <p id="error" style="color: red; display:none;"></p>
+                        <input name="nombre" type="text" class="form-control" placeholder="Por favor inserte su nombre" required><br>
+                        <input name="nacionalidad" type="text" class="form-control" placeholder="Por favor inserte su nacionalidad" required><br>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <br><br>
+                        </div>
+                        <button type="submit" class="btn btn-secondary font-weight-normal">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            if (localStorage.getItem("token") == null) {
+                window.location.href = "index.php";
+            }
+            $('#cerrar_sesion').on('click', function(e) {
+                localStorage.clear();
+                window.location.href = "index.php";
+            });
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://api-rest-biblioteca-180394.herokuapp.com/autor',
+                    data: $('form').serialize(),
+                    beforeSend: function(request) {
+                        request.setRequestHeader("token", window.localStorage.getItem('token'));
+                    },
+                    success: function(resp) {
+                        console.log(resp.autorDB._id);
+                        var formData = new FormData();
+                        formData.append('archivo', $('input[type=file]')[0].files[0]);
+                        $.ajax({
+                            type: 'PUT',
+                            url: `https://api-rest-biblioteca-180394.herokuapp.com/autor/upload/autor/${resp.autorDB._id}`,
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            beforeSend: function(request) {
+                                request.setRequestHeader("token", window.localStorage.getItem('token'));
+                            },
+                            success: function(res) {
+                                console.log(res);
+                                alert("Autor creado con exito");
+                                window.location.href = "reporte-autores.html";
+                            },
+                            error: function(er) {
+                                console.log(er);
+                                $('#error').text(er.responseJSON);
+                                $('#error').show();
+                            }
+                        });
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        $('#error').text(err.responseJSON.err.message);
+                        $('#error').show();
+                    }
+                });
+            });
+
+            $('input').on('focus', function(e) {
+                $('#error').hide();
+            });
+        </script>
+
+
+        <br>
+
+    </body>
+
+</html>
